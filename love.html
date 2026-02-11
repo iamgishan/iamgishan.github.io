@@ -2,61 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Do You Remember? ❤️</title>
+
 <style>
-body {
-    background: linear-gradient(to bottom right, #ffd6e8, #ffe6f3);
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    padding-top: 120px;
+body{
+    margin:0;
+    padding: min(10vh, 60px) 12px;
+    background: linear-gradient(to bottom right,#ffd6e8,#ffe6f3);
+    font-family:"Poppins",sans-serif;
+    text-align:center;
 }
 
-.card {
-    background: #ffe6f2;
-    width: 500px;
-    margin: auto;
-    padding: 40px;
-    border-radius: 22px;
-    border: 4px solid #ff9acb;
-    box-shadow: 0 0 20px #ff7db5;
+.card{
+    background:#ffe6f2;
+    width:min(92vw, 560px);
+    margin:auto;
+    padding: clamp(20px, 5vw, 40px);
+    border-radius:22px;
+    border:4px solid #ff9acb;
+    box-shadow:0 0 20px #ff7db5;
 }
 
-h1 {
-    font-size: 34px;
-    color: #ff2f78;
+h1{
+    font-size: clamp(22px, 7vw, 34px);
+    color:#ff2f78;
+    margin-top:0;
 }
 
-input {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: 2px solid #ff9acb;
-    font-size: 18px;
-    outline: none;
-    width: 200px;
+input{
+    padding:14px 16px;
+    border-radius:12px;
+    border:2px solid #ff9acb;
+    width:min(75vw,250px);
+    font-size:clamp(16px,4vw,20px);
+    outline:none;
 }
 
-button {
-    margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 20px;
-    border: none;
-    border-radius: 14px;
-    background: #ff2f78;
-    color: white;
-    cursor: pointer;
+button{
+    margin-top:18px;
+    padding:clamp(12px,4vw,16px) clamp(20px,5vw,30px);
+    font-size:clamp(16px,4vw,20px);
+    border:none;
+    border-radius:14px;
+    background:#ff2f78;
+    color:#fff;
+    cursor:pointer;
 }
 
-#error {
-    margin-top: 15px;
-    color: red;
-    font-weight: 600;
+#error{
+    margin-top:12px;
+    font-size:clamp(14px,4vw,18px);
+    color:red;
+    font-weight:600;
 }
 </style>
 </head>
+
 <body>
 
 <div class="card">
-    <h1>Can you remember the<br>year we met? 💘</h1>
+    <h1>Enter<br>the year we met? 💘</h1>
 
     <input type="text" id="pwd" placeholder="Enter year">
     <br>
@@ -66,14 +72,13 @@ button {
 </div>
 
 <script>
-function check() {
+function check(){
     let val = document.getElementById("pwd").value.trim();
 
-    if (val === "2023") {
+    if(val === "2023"){
         window.location.href = "game.html";
     } else {
-        document.getElementById("error").innerHTML =
-          "Aww no baby 😳 Try again!";
+        document.getElementById("error").innerText = "Aww no Patiyo 😳 Try again!";
     }
 }
 </script>
