@@ -2,48 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Catch My Heart ❤️</title>
 
 <style>
-body {
-    margin: 0;
-    overflow: hidden;
-    background: linear-gradient(to bottom right, #ffb6d9, #ffd6e8);
-    font-family: "Poppins", sans-serif;
+body{
+    margin:0;
+    overflow:hidden;
+    background:linear-gradient(to bottom right,#ffb6d9,#ffd6e8);
+    font-family:"Poppins",sans-serif;
 }
 
-/* Counter Box */
-.counterBox {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: white;
-    padding: 15px 25px;
-    border-radius: 16px;
-    font-size: 24px;
-    font-weight: 600;
-    color: #ff2f78;
-    box-shadow: 0 0 12px #ff8cc8;
-    z-index: 9999;
+.counterBox{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#fff;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:clamp(16px,5vw,22px);
+    font-weight:600;
+    color:#ff2f78;
+    box-shadow:0 0 12px #ff8cc8;
+    z-index:9999;
 }
 
-/* All bouncing emojis */
-.emoji {
-    position: absolute;
-    font-size: 55px;
-    animation: bounce 1.5s infinite ease-in-out alternate;
-    cursor: pointer;
-    user-select: none;
+/* Emojis (including hearts) */
+.emoji{
+    position:absolute;
+    font-size:clamp(34px,10vw,60px);
+    animation:bounce 1.6s infinite ease-in-out alternate;
+    user-select:none;
 }
 
-/* Heart floats slower to help clicking */
-.heart {
-    animation-duration: 2.5s !important;
+.heart{
+    animation-duration:2.2s !important; /* slower hearts */
+    cursor:pointer;
 }
 
-@keyframes bounce {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(20px, -20px); }
+@keyframes bounce{
+    0%{transform:translate(0,0);}
+    100%{transform:translate(20px,-20px);}
 }
 </style>
 </head>
@@ -55,73 +54,66 @@ body {
 <script>
 let caught = 0;
 
-/* EMOJIS THAT WILL FILL THE SCREEN */
 const emojis = [
-    "💖","💖","💖","💖","💖", 
+    "💖","💖","💖","💖","💖",
     "😊","😢","😘","😎","😳",
     "🎀","✨","🌸","🧸","🌷",
     "💘","❤️","💞","💕","💗",
     "🌳","🌴","🌲","🍀","🌺"
 ];
 
-/* RANDOM POSITION FUNCTION */
-function randomPos() {
+function randomPos(){
     return {
-        x: Math.random() * (window.innerWidth - 80),
-        y: Math.random() * (window.innerHeight - 80)
+        x: Math.random() * (window.innerWidth - 70),
+        y: Math.random() * (window.innerHeight - 70)
     };
 }
 
-/* CREATE EMOJI OBJECTS */
-function createEmoji(symbol) {
-    let div = document.createElement("div");
-    div.className = "emoji";
-    div.innerHTML = symbol;
+function createEmoji(symbol){
+    let d = document.createElement("div");
+    d.className = "emoji";
+    d.innerHTML = symbol;
 
-    let pos = randomPos();
-    div.style.left = pos.x + "px";
-    div.style.top = pos.y + "px";
+    let p = randomPos();
+    d.style.left = p.x + "px";
+    d.style.top  = p.y + "px";
 
-    // hearts are clickable
-    if (symbol === "💖") {
-        div.classList.add("heart");
+    if(symbol === "💖"){
+        d.classList.add("heart");
 
-        div.onclick = function() {
+        d.onclick = function(){
             caught++;
             document.getElementById("count").innerHTML =
-                "💖 Caught : " + caught + " / 5";
+                "Hearts Caught: " + caught + " / 5";
 
-            div.remove();
+            d.remove();
 
-            if (caught >= 5) {
+            if(caught >= 5){
                 window.location.href = "final.html";
             } else {
-                // respawn new heart after catching
                 createEmoji("💖");
             }
         };
     }
 
-    // fast bouncing movement
-    setInterval(() => {
-        let newPos = randomPos();
-        div.style.left = newPos.x + "px";
-        div.style.top = newPos.y + "px";
-    }, 2500 + Math.random() * 500); // random speed
+    /* Slower movement for mobile */
+    let changeSpeed = 2000 + Math.random() * 1500;
 
-    document.body.appendChild(div);
+    setInterval(() => {
+        let np = randomPos();
+        d.style.left = np.x + "px";
+        d.style.top  = np.y + "px";
+    }, changeSpeed);
+
+    document.body.appendChild(d);
 }
 
-/* Spawn emojis on screen */
-for (let i = 0; i < emojis.length; i++) {
+for(let i=0; i<emojis.length; i++){
     createEmoji(emojis[i]);
 }
 
-/* Extra hearts spawn to keep game active */
-setInterval(() => {
-    createEmoji("💖");
-}, 5000);
-
+/* Extra hearts continue to spawn */
+setInterval(() => createEmoji("💖"), 6000);
 </script>
 
 </body>
