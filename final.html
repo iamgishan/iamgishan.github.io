@@ -6,149 +6,174 @@
 <title>I Love You ❤️</title>
 
 <style>
-  body {
+  /* Page reset & prevent scroll */
+  html, body {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    font-family: "Poppins", sans-serif;
-    background: #000; /* fallback */
+    font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: #000; /* fallback while video loads */
   }
 
-  /* Fullscreen background image */
-  .bg-image {
+  /* Fullscreen video pinned behind everything */
+  .video-bg {
     position: fixed;
-    inset: 0;
+    inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
     width: 100vw;
     height: 100vh;
-    object-fit: cover;          /* fills whole screen */
-    object-position: center;    /* centers image */
-    z-index: -2;                /* behind everything */
+    object-fit: cover;        /* fill screen, crop if needed */
+    object-position: center;  /* center crop */
+    z-index: -1;              /* behind overlays */
+    background: #000;
     user-select: none;
     -webkit-user-drag: none;
-  for readability */
+  }
+
+  /* Soft gradient overlay for readability of text */
   .overlay {
     position: fixed;
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0,0,0,0.45),
-      rgba(0,0,0,0.20),
-      rgba(0,0,0,0.15)
+      rgba(0,0,0,0.45) 0%,
+      rgba(0,0,0,0.25) 35%,
+      rgba(0,0,0,0.15) 60%,
+      rgba(0,0,0,0.10) 100%
     );
-    pointer-events: none;
-    z-index: -1;
+    pointer-events: none; /* doesn’t block taps/clicks */
   }
 
-  /* Floating hearts */
+  /* Floating hearts (subtle) */
+  .hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
   .heart {
     position: absolute;
-    font-size: clamp(20px, 7vw, 40px);
+    font-size: clamp(18px, 5vw, 36px);
     opacity: .85;
-    animation: floatUp 10s infinite linear;
+    animation: rise 10s linear infinite;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));
   }
-  @keyframes floatUp {
-    0%   { transform: translateY(120vh) rotate(0turn); opacity: 0; }
-    20%  { opacity: 1; }
-    100% { transform: translateY(-20vh) rotate(1turn); opacity: 0; }
+  @keyframes rise {
+    0%   { transform: translateY(110vh) rotate(0turn);   opacity: 0; }
+    10%  { opacity: .95; }
+    100% { transform: translateY(-15vh) rotate(1turn);   opacity: .2; }
   }
 
-  /* Title */
+  /* Title (top center) */
   .title {
     position: fixed;
-    top: clamp(14px, 5vh, 40px);
+    top: clamp(10px, 4vh, 28px);
     left: 50%;
     transform: translateX(-50%);
-    color: white;
-    font-size: clamp(28px, 7vw, 60px);
-    font-weight: 700;
-    text-shadow: 0 0 14px rgba(0,0,0,.6);
-    animation: heartbeat 1.5s infinite ease-in-out;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 20px rgba(0,0,0,.45);
     z-index: 2;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: clamp(24px, 6vw, 58px);
+    animation: heartbeat 1.4s ease-in-out infinite;
   }
-
   @keyframes heartbeat {
-    0%,100% { transform: translateX(-50%) scale(1); }
-    50%     { transform: translateX(-50%) scale(1.12); }
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50%      { transform: translateX(-50%) scale(1.12); }
   }
 
-  /* Bottom message box */
+  /* Bottom message (fixed) */
   .message {
     position: fixed;
-    bottom: clamp(14px, 5vh, 40px);
+    bottom: clamp(10px, 4vh, 26px);
     left: 50%;
     transform: translateX(-50%);
     width: min(92vw, 900px);
-    padding: clamp(10px, 3vw, 22px);
-    border-radius: 16px;
-    text-align: center;
     color: #ffe6f2;
-    font-weight: 600;
-    background: rgba(255,100,150,0.25);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 25px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.2);
+    text-align: center;
     z-index: 2;
+    padding: clamp(8px, 2vw, 16px) clamp(12px, 3vw, 24px);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(
+      to top right,
+      rgba(255, 64, 128, .22),
+      rgba(255, 160, 200, .16)
+    );
+    box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.2);
   }
-
   .message .line1 {
-    font-size: clamp(16px, 5vw, 30px);
+    font-size: clamp(16px, 4.6vw, 28px);
+    font-weight: 600;
   }
   .message .line2 {
+    margin-top: .3em;
     font-size: clamp(14px, 4vw, 22px);
-    margin-top: 6px;
+    font-weight: 600;
   }
 
-  /* Corner stickers */
+  /* Cute corner stickers */
   .corner {
     position: fixed;
-    font-size: clamp(24px, 9vw, 50px);
-    opacity: .95;
-    filter: drop-shadow(0 6px 14px rgba(0,0,0,.3));
     z-index: 2;
+    font-size: clamp(20px, 7vw, 48px);
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
+    opacity: .95;
+    user-select: none;
   }
   .c1 { top: 10px; left: 10px; }
   .c2 { top: 10px; right: 10px; }
   .c3 { bottom: 10px; left: 10px; }
   .c4 { bottom: 10px; right: 10px; }
 
+  /* Prevent blue highlight on iOS when tapping */
   * { -webkit-tap-highlight-color: transparent; }
 </style>
 </head>
-
 <body>
 
-<!-- FULLSCREEN BACKGROUND IMAGE -->
-us.jpg
+<!-- Fullscreen background video -->
+<video class="video-bg" autoplay muted loop playsinline>
+  <!-- Replace with your file name -->
+  <source src="video.mp4" type="video/mp4" />
+  <!-- Fallback message -->
+  Your browser does not support the video tag.
+</video>
 
-<!-- Soft overlay -->
-<div class="overlay"></div>
+<!-- Soft overlay for readability -->
+<div class="overlay" aria-hidden="true"></div>
 
-<!-- Corner Stickers -->
+<!-- Optional corner stickers -->
 <div class="corner c1">💘</div>
 <div class="corner c2">🧸</div>
 <div class="corner c3">🌷</div>
 <div class="corner c4">🎀</div>
 
+<!-- Floating hearts (generated) -->
+<div class="hearts" aria-hidden="true" id="hearts"></div>
+
 <!-- Title -->
 <div class="title">I LOVE YOU ❤️</div>
 
-<!-- Bottom Romantic Message -->
+<!-- Bottom message -->
 <div class="message">
   <div class="line1">I love you patiyo 💕</div>
   <div class="line2">Your forever Valentine, <b>Gishan</b> 💋💘✨</div>
 </div>
 
-<!-- Floating Hearts Script -->
 <script>
-const pool = ["💗","💖","💕","❤️","✨","🌸"];
-for (let i = 0; i < 24; i++) {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.textContent = pool[Math.floor(Math.random() * pool.length)];
-    h.style.left = Math.random() * 100 + "vw";
-    h.style.animationDelay = (Math.random() * 8) + "s";
-    document.body.appendChild(h);
-}
+  // Create floating hearts at random positions and delays
+  const container = document.getElementById('hearts');
+  const pool = ["💗","💖","💕","❤️","✨","🌸"];
+  for (let i = 0; i < 22; i++) {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = pool[Math.floor(Math.random()*pool.length)];
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.animationDelay = (Math.random()*8) + 's';
+    container.appendChild(h);
+  }
 </script>
 
 </body>
