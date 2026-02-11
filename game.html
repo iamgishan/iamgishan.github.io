@@ -38,7 +38,7 @@ body {
 
 /* Heart floats slower to help clicking */
 .heart {
-    animation-duration: 1.9s !important;
+    animation-duration: 2.5s !important;
 }
 
 @keyframes bounce {
@@ -89,7 +89,7 @@ function createEmoji(symbol) {
         div.onclick = function() {
             caught++;
             document.getElementById("count").innerHTML =
-                "Hearts Caught: " + caught + " / 5";
+                "💖 Caught : " + caught + " / 5";
 
             div.remove();
 
@@ -107,7 +107,7 @@ function createEmoji(symbol) {
         let newPos = randomPos();
         div.style.left = newPos.x + "px";
         div.style.top = newPos.y + "px";
-    }, 1500 + Math.random() * 500); // random speed
+    }, 2500 + Math.random() * 500); // random speed
 
     document.body.appendChild(div);
 }
