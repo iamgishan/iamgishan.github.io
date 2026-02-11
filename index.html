@@ -1,208 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
 <title>Be My Valentine ❤️</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --pink:#ff4d88;
-    --light:#ffe6f2;
-    --soft:#ff99c8;
-    --card:#fff;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    min-height:100vh;
-    background: radial-gradient(1200px 600px at 10% -10%, #fff0f6, transparent),
-                radial-gradient(1200px 600px at 90% 110%, #fff0f6, transparent),
-                linear-gradient(180deg, #fff7fb 0%, #ffe6f2 100%);
-    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    overflow:hidden; /* so floating stickers don't cause scrollbars */
-  }
-
-  /* Floating emoji/stickers background */
-  .bg-stickers {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .bg-stickers span{
-    position: absolute;
-    font-size: clamp(20px, 4vw, 36px);
-    opacity: .85;
-    animation: floatUp linear infinite;
-  }
-  /* Place them horizontally at different spots */
-  .bg-stickers span:nth-child(1){left:5%;  animation-duration: 12s; animation-delay: 0s;}
-  .bg-stickers span:nth-child(2){left:15%; animation-duration: 13s; animation-delay: 2s;}
-  .bg-stickers span:nth-child(3){left:25%; animation-duration: 14s; animation-delay: 1s;}
-  .bg-stickers span:nth-child(4){left:35%; animation-duration: 12.5s; animation-delay: 3s;}
-  .bg-stickers span:nth-child(5){left:50%; animation-duration: 11.5s; animation-delay: 1.5s;}
-  .bg-stickers span:nth-child(6){left:60%; animation-duration: 15s; animation-delay: .5s;}
-  .bg-stickers span:nth-child(7){left:70%; animation-duration: 13.5s; animation-delay: 2.5s;}
-  .bg-stickers span:nth-child(8){left:80%; animation-duration: 12.2s; animation-delay: .8s;}
-  .bg-stickers span:nth-child(9){ left:90%; animation-duration: 14.5s; animation-delay: 3.2s;}
-  @keyframes floatUp{
-    0%   {transform: translateY(100vh) rotate(0deg); opacity: .0;}
-    10%  {opacity: .85;}
-    100% {transform: translateY(-15vh) rotate(1turn); opacity: .15;}
-  }
-
-  .wrap{
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding: 24px;
-    text-align:center;
-  }
-
-  .card{
-    background: var(--card);
-    border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(255,77,136,.25);
-    padding: clamp(20px, 3.5vw, 40px);
-    max-width: 680px;
-    width: 100%;
-    position: relative;
-  }
-
-  h1{
-    font-family: 'Pacifico', cursive;
-    font-size: clamp(28px, 6vw, 44px);
-    color: var(--pink);
-    margin: 0 0 8px;
-  }
-  p.sub{
-    margin: 0 0 24px;
-    color:#6a2b45;
-    font-weight:600;
-  }
-
-  .btns{
-    display:flex;
-    gap:16px;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    position: relative;
-    min-height: 84px; /* space for runaway No */
-  }
-
-  .btn{
-    padding: 14px 26px;
-    font-size: 18px;
-    border:none;
-    border-radius: 14px;
-    cursor:pointer;
-    transition: transform .12s ease, box-shadow .2s ease;
-    box-shadow: 0 8px 22px rgba(255,77,136,.25);
-    user-select:none;
-    touch-action: manipulation;
-  }
-  .btn:active{ transform: scale(.98); }
-
-  #yes{
-    background: var(--pink);
-    color: #fff;
-  }
-  #no{
-    background: var(--soft);
-    color: #fff;
-    position: absolute;  /* so we can move it freely */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    will-change: left, top, transform;
-  }
-
-  /* Cute corner stickers */
-  .corner{
-    position:absolute;
-    font-size: clamp(26px, 6vw, 40px);
-    opacity:.9;
-  }
-  .c1{top:-12px; left:-6px; transform: rotate(-12deg);}
-  .c2{top:-12px; right:-6px; transform: rotate(8deg);}
-  .c3{bottom:-12px; left:-6px; transform: rotate(10deg);}
-  .c4{bottom:-12px; right:-6px; transform: rotate(-6deg);}
+    body {
+        background: #ffe6f2;
+        font-family: "Comic Sans MS", cursive;
+        text-align: center;
+        padding-top: 80px;
+        overflow: hidden;
+    }
+    h1 {
+        color: #ff4d88;
+        font-size: 40px;
+    }
+    .btn {
+        padding: 15px 30px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 20px;
+        transition: 0.3s;
+        user-select: none;
+    }
+    #yes {
+        background: #ff4d88;
+        color: white;
+    }
+    #no {
+        background: #ff99c8;
+        color: white;
+        position: absolute;
+        pointer-events: none; /* Cannot click */
+    }
 </style>
 </head>
 <body>
 
-<!-- Floating stickers background -->
-<div class="bg-stickers" aria-hidden="true">
-  <span>💖</span><span>💘</span><span>💝</span><span>🌸</span><span>✨</span>
-  <span>💞</span><span>🌷</span><span>🫶</span><span>💗</span>
-</div>
+<h1>Will you be my Valentine? 💖</h1>
 
-<div class="wrap">
-  <div class="card">
-    <div class="corner c1">💐</div>
-    <div class="corner c2">🧸</div>
-    <div class="corner c3">🎀</div>
-    <div class="corner c4">🌟</div>
-
-    <h1>Will you be my Valentine? 💖</h1>
-    <p class="sub">Pretty please? I have something special for you! ✨</p>
-
-    <div class="btns" id="btnArea">
-      <button id="yes" class="btn" aria-label="Yes">Yes 💕</button>
-      <button id="no" class="btn" aria-label="No">No 😳</button>
-    </div>
-  </div>
-</div>
+<button id="yes" class="btn" onclick="yesAnswer()">Yes 💕</button>
+<button id="no" class="btn">No 😳</button>
 
 <script>
-  // Navigate to love page when "Yes" is clicked
-  document.getElementById('yes').addEventListener('click', () => {
-    window.location.href = 'love.html';
-  });
+function yesAnswer() {
+    window.location.href = "love.html"; 
+}
 
-  // Make the "No" button run away on hover/touch/click attempts
-  const noBtn = document.getElementById('no');
+const noBtn = document.getElementById("no");
 
-  function moveNo(){
-    const padding = 10;
-    const w = noBtn.offsetWidth || 120;
-    const h = noBtn.offsetHeight || 48;
+// Move the NO button every time the mouse comes close
+document.addEventListener("mousemove", (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
 
-    // Get viewport size
-    const ww = window.innerWidth;
-    const wh = window.innerHeight;
+    const rect = noBtn.getBoundingClientRect();
+    const btnX = rect.left + rect.width / 2;
+    const btnY = rect.top + rect.height / 2;
 
-    // Compute random position within viewport bounds
-    const maxX = Math.max(padding, ww - w - padding);
-    const maxY = Math.max(padding, wh - h - padding);
-    const x = Math.floor(Math.random() * maxX);
-    const y = Math.floor(Math.random() * maxY);
+    const distance = Math.hypot(x - btnX, y - btnY);
 
-    noBtn.style.left = x + 'px';
-    noBtn.style.top  = y + 'px';
-    noBtn.style.transform = 'translate(0,0)';
-  }
+    // If mouse is closer than 120px, move NO button
+    if (distance < 120) {
+        moveNoButton();
+    }
+});
 
-  // Trigger move on different interactions (desktop + mobile)
-  ['mouseover','pointerdown','touchstart','focus','click'].forEach(evt=>{
-    noBtn.addEventListener(evt, (e)=>{
-      e.preventDefault(); // stop any accidental click
-      moveNo();
-    }, {passive:false});
-  });
+function moveNoButton() {
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-  // Also reposition if window resizes (keeps it on-screen)
-  window.addEventListener('resize', moveNo);
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-  // Place it somewhere fun on load
-  window.addEventListener('load', moveNo);
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+// Set initial position
+moveNoButton();
 </script>
 
 </body>
