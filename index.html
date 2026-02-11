@@ -9,26 +9,41 @@
         font-family: "Comic Sans MS", cursive;
         text-align: center;
         padding-top: 80px;
-        overflow: hidden;
     }
+
+    .card {
+        background: white;
+        width: 600px;
+        margin: auto;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px #ff99c8;
+        position: relative;    /* IMPORTANT */
+        height: 300px;         /* The NO button stays inside this area */
+        overflow: hidden;      /* Do NOT let it escape */
+    }
+
     h1 {
         color: #ff4d88;
-        font-size: 40px;
+        font-size: 35px;
+        margin-top: 0;
     }
+
     .btn {
         padding: 15px 30px;
         font-size: 20px;
         border: none;
         border-radius: 10px;
         cursor: pointer;
-        margin: 20px;
-        transition: 0.3s;
-        user-select: none;
+        margin: 10px;
+        transition: 0.1s;
     }
+
     #yes {
         background: #ff4d88;
         color: white;
     }
+
     #no {
         background: #ff99c8;
         color: white;
@@ -39,10 +54,14 @@
 </head>
 <body>
 
-<h1>Will you be my Valentine? 💖</h1>
+<div class="card">
 
-<button id="yes" class="btn" onclick="yesAnswer()">Yes 💕</button>
-<button id="no" class="btn">No 😳</button>
+    <h1>Will you be my Valentine? 💖</h1>
+
+    <button id="yes" class="btn" onclick="yesAnswer()">Yes 💕</button>
+    <button id="no" class="btn">No 😳</button>
+
+</div>
 
 <script>
 function yesAnswer() {
@@ -50,27 +69,26 @@ function yesAnswer() {
 }
 
 const noBtn = document.getElementById("no");
+const card = document.querySelector(".card");
 
-// Move the NO button every time the mouse comes close
+// Move NO whenever mouse is near
 document.addEventListener("mousemove", (e) => {
-    const x = e.clientX;
-    const y = e.clientY;
-
     const rect = noBtn.getBoundingClientRect();
     const btnX = rect.left + rect.width / 2;
     const btnY = rect.top + rect.height / 2;
 
-    const distance = Math.hypot(x - btnX, y - btnY);
+    const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
 
-    // If mouse is closer than 120px, move NO button
     if (distance < 120) {
-        moveNoButton();
+        moveNo();
     }
 });
 
-function moveNoButton() {
-    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+function moveNo() {
+    const cardRect = card.getBoundingClientRect();
+
+    const maxX = cardRect.width - noBtn.offsetWidth - 20;
+    const maxY = cardRect.height - noBtn.offsetHeight - 20;
 
     const randomX = Math.random() * maxX;
     const randomY = Math.random() * maxY;
@@ -79,8 +97,8 @@ function moveNoButton() {
     noBtn.style.top = randomY + "px";
 }
 
-// Set initial position
-moveNoButton();
+// Set starting position
+moveNo();
 </script>
 
 </body>
