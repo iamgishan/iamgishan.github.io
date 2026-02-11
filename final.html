@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I LOVE YOU ❤️</title>
+<style>
+body {
+    background: linear-gradient(to bottom right, #ffd6e8, #ffe6f3);
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    padding-top: 100px;
+    overflow: hidden;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    font-size: 40px;
+    animation: floatUp 8s infinite linear;
+    opacity: 0.6;
+}
+@keyframes floatUp {
+    0% { transform: translateY(120vh); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-20vh); opacity: 0; }
+}
+
+h1 {
+    font-size: 70px;
+    color: #ff2f78;
+    margin-bottom: 20px;
+    animation: heartbeat 1.4s infinite;
+}
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.15); }
+}
+
+img {
+    width: 320px;
+    border-radius: 20px;
+    border: 6px solid #ffb6d9;
+    box-shadow: 0 0 25px #ff8ec5;
+}
+</style>
+</head>
+
+<body>
+
+<h1>I LOVE YOU ❤️</h1>
+
+us.jpg
+
+<script>
+for (let i = 0; i < 20; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💗";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 8 + "s";
+    document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
