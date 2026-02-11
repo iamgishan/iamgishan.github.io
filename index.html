@@ -2,135 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Be My Valentine ❤️ 2026</title>
+<title>Be My Valentine ❤️</title>
 
 <style>
 /* PAGE BACKGROUND */
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom right, #ffd6e8, #ffe6f3, #fff0f8);
-    font-family: "Poppins", sans-serif;
     overflow: hidden;
+    background: linear-gradient(to bottom right, #ffb6c9, #ffd6e8);
+    font-family: "Comic Sans MS", cursive;
 }
 
-/* FLOATING BIG HEARTS */
+/* BIG FLOATING HEARTS */
 .big-heart {
     position: absolute;
-    font-size: 75px;
+    font-size: 80px;
+    animation: floatUp 6s infinite ease-in-out;
     opacity: 0.7;
-    animation: floatUp 8s infinite ease-in-out;
 }
 @keyframes floatUp {
-    0% { transform: translateY(140vh) rotate(0deg); opacity: 0; }
-    20% { opacity: 1; }
+    0%   { transform: translateY(120vh) rotate(0deg); opacity: 0; }
+    20%  { opacity: 1; }
     100% { transform: translateY(-20vh) rotate(20deg); opacity: 0; }
 }
 
-/* MAIN CARD */
+/* MAIN WHITE CARD */
 .card {
-    background: #ffe6f2;
-    width: 700px;
-    height: 520px;
+    background: white;
+    width: 650px;
     margin: 60px auto;
     padding: 40px;
-    border-radius: 28px;
-    border: 6px solid #ffb6d9;
-    box-shadow: 0 0 25px #ff8ec5, inset 0 0 25px #ffffff;
-    position: relative;
+    border-radius: 25px;
+    box-shadow: 0 0 30px #ff8eb3;
     text-align: center;
+    position: relative;
+    height: 420px;
     overflow: hidden;
 }
 
 /* TITLE */
 h1 {
-    color: #ff2f78;
-    font-size: 42px;
-    margin-top: 10px;
-    text-shadow: 0 0 8px #ffbad3;
-    font-weight: 700;
-}
-
-/* 2026 STICKER */
-.yearSticker {
-    position: absolute;
-    top: 8px;
-    right: 20px;
-    font-size: 26px;
-    background: #ff7db5;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 18px;
-    box-shadow: 0 0 12px #ff8cc8;
-    font-weight: 600;
+    color: #ff3377;
+    font-size: 38px;
+    margin-top: 0;
+    text-shadow: 0px 0px 10px #ffb6d1;
 }
 
 /* COUPLE GIF */
 .couple {
-    width: 200px;
-    margin-top: 5px;
-    animation: dance 3s infinite ease-in-out;
+    width: 180px;
+    margin-top: -10px;
+    animation: bounce 3s infinite ease-in-out;
 }
-@keyframes dance {
+@keyframes bounce {
     0%,100% { transform: translateY(0); }
-    50%     { transform: translateY(-10px); }
+    50%     { transform: translateY(-12px); }
 }
 
-/* BUTTON STYLES */
+/* BUTTONS */
 .btn {
-    padding: 20px 40px;
-    font-size: 26px;
+    padding: 15px 30px;
+    font-size: 20px;
     border: none;
-    border-radius: 20px;
+    border-radius: 14px;
     cursor: pointer;
     margin: 20px;
-    transition: 0.15s ease;
+    transition: 0.1s;
     user-select: none;
 }
 
 #yes {
-    background: #ff2f78;
+    background: #ff4d88;
     color: white;
-    box-shadow: 0 8px 22px rgba(255, 50, 120, 0.4);
-}
-#yes:hover {
-    transform: scale(1.07);
 }
 
 #no {
-    background: #ff9acb;
+    background: #ffa3cf;
     color: white;
     position: absolute;
-    pointer-events: none;
-    padding: 20px 40px;
-    border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(255, 140, 180, 0.4);
+    pointer-events: none; /* cannot click NO */
 }
 
-/* CORNER STICKERS */
-.corner {
+/* DECORATIVE CORNER STICKERS */
+.sticker {
     position: absolute;
     font-size: 60px;
-    opacity: 0.95;
 }
-.c1 { top: -5px; left: -5px; transform: rotate(-8deg); }
-.c2 { top: -5px; right: -5px; transform: rotate(10deg); }
-.c3 { bottom: -5px; left: -5px; transform: rotate(8deg); }
-.c4 { bottom: -5px; right: -5px; transform: rotate(-6deg); }
+.s1 { top: -10px; left: -10px; }
+.s2 { top: -10px; right: -10px; }
+.s3 { bottom: -10px; left: -10px; }
+.s4 { bottom: -10px; right: -10px; }
 
-/* FLOATING SMALL HEARTS */
+/* FLOATING SMALL HEART PARTICLES */
 .particle {
     position: absolute;
-    font-size: 26px;
-    opacity: 0.85;
-    animation: rise 9s infinite linear;
+    font-size: 25px;
+    opacity: 0.8;
+    animation: rise 8s infinite linear;
 }
 @keyframes rise {
-    0% { transform: translateY(120vh); opacity: 0; }
-    20% { opacity: 1; }
+    0%   { transform: translateY(100vh); opacity: 0; }
+    20%  { opacity: 1; }
     100% { transform: translateY(-20vh); opacity: 0; }
 }
-
 </style>
 </head>
 
@@ -138,46 +113,44 @@ h1 {
 
 <!-- BACKGROUND MUSIC -->
 <audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<!-- BIG FLOATING HEARTS -->
-<div class="big-heart" style="left:12%;">💖</div>
-<div class="big-heart" style="left:45%; animation-delay:1.8s;">💕</div>
-<div class="big-heart" style="left:78%; animation-delay:3.2s;">❤️</div>
+<!-- BIG HEARTS -->
+<div class="big-heart" style="left:10%;">❤️</div>
+<div class="big-heart" style="left:40%; animation-delay:2s;">💖</div>
+<div class="big-heart" style="left:70%; animation-delay:4s;">💕</div>
 
-<!-- SMALL HEART PARTICLES -->
+<!-- SMALL FLOATING HEART PARTICLES -->
 <script>
-for (let i = 0; i < 18; i++) {
-    let p = document.createElement("div");
-    p.className = "particle";
-    p.innerHTML = "💗";
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.animationDelay = Math.random() * 7 + "s";
-    document.body.appendChild(p);
+for (let i = 0; i < 20; i++) {
+    let h = document.createElement("div");
+    h.innerHTML = "💗";
+    h.className = "particle";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 6 + "s";
+    h.style.fontSize = (20 + Math.random() * 20) + "px";
+    document.body.appendChild(h);
 }
 </script>
 
 <!-- MAIN CARD -->
 <div class="card">
 
-    <!-- 2026 TAG -->
-    <div class="yearSticker">Valentine 2026 💘</div>
-
     <!-- CORNER STICKERS -->
-    <div class="corner c1">💘</div>
-    <div class="corner c2">🎀</div>
-    <div class="corner c3">🧸</div>
-    <div class="corner c4">🌷</div>
+    <div class="sticker s1">💘</div>
+    <div class="sticker s2">🎀</div>
+    <div class="sticker s3">💞</div>
+    <div class="sticker s4">🧸</div>
 
     <h1>Will you be my Valentine? 💖</h1>
 
-    <!-- DANCING COUPLE GIF -->
-    https://media.tenor.com/u8nQehGkP7YAAAAC/couple-love.gif
+    <!-- COUPLE GIF -->
+    <img src="https://i.pinimg.com/originals/35/a0/d2/35a0d2b4953f4c2da233c6f0ca6f0de2.gif" class="couple">
 
     <!-- BUTTONS -->
-    <button id="yes" class="btn" onclick="yesAnswer()">YES 💕</button>
-    <button id="no" class="btn">NO 😳</button>
+    <button id="yes" class="btn" onclick="yesAnswer()">Yes 💕</button>
+    <button id="no" class="btn">No 😳</button>
 
 </div>
 
@@ -189,24 +162,33 @@ function yesAnswer() {
 const noBtn = document.getElementById("no");
 const card = document.querySelector(".card");
 
+// Move NO instantly inside card
 document.addEventListener("mousemove", (e) => {
     const rect = noBtn.getBoundingClientRect();
     const btnX = rect.left + rect.width / 2;
     const btnY = rect.top + rect.height / 2;
+
     const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
 
-    if (distance < 140) moveNo();
+    if (distance < 120) {
+        moveNo();
+    }
 });
 
 function moveNo() {
-    const rect = card.getBoundingClientRect();
-    const maxX = rect.width - noBtn.offsetWidth - 20;
-    const maxY = rect.height - noBtn.offsetHeight - 20;
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top = Math.random() * maxY + "px";
+    const cardRect = card.getBoundingClientRect();
+
+    const maxX = cardRect.width - noBtn.offsetWidth - 20;
+    const maxY = cardRect.height - noBtn.offsetHeight - 20;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 }
 
-// initial placement
+// initial position
 moveNo();
 </script>
 
