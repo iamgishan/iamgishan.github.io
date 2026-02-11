@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Catch My Heart ❤️</title>
+
 <style>
 body {
     margin: 0;
     overflow: hidden;
-    background: linear-gradient(to right, #ffb6d9, #ffd6e8);
+    background: linear-gradient(to bottom right, #ffb6d9, #ffd6e8);
     font-family: "Poppins", sans-serif;
 }
 
+/* Counter Box */
 .counterBox {
     position: absolute;
     top: 20px;
@@ -22,22 +24,30 @@ body {
     font-weight: 600;
     color: #ff2f78;
     box-shadow: 0 0 12px #ff8cc8;
+    z-index: 9999;
 }
 
-.heart {
+/* All bouncing emojis */
+.emoji {
     position: absolute;
-    font-size: 50px;
+    font-size: 55px;
+    animation: bounce 1.5s infinite ease-in-out alternate;
     cursor: pointer;
-    animation: float 5s infinite ease-in-out;
+    user-select: none;
 }
 
-@keyframes float {
-    0%   { transform: translateY(0px); }
-    50%  { transform: translateY(-30px); }
-    100% { transform: translateY(0px); }
+/* Heart floats slower to help clicking */
+.heart {
+    animation-duration: 1.9s !important;
+}
+
+@keyframes bounce {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(20px, -20px); }
 }
 </style>
 </head>
+
 <body>
 
 <div class="counterBox" id="count">Hearts Caught: 0 / 5</div>
@@ -45,39 +55,36 @@ body {
 <script>
 let caught = 0;
 
-function createHeart() {
-    let h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "💖";
+/* EMOJIS THAT WILL FILL THE SCREEN */
+const emojis = [
+    "💖","💖","💖","💖","💖", 
+    "😊","😢","😘","😎","😳",
+    "🎀","✨","🌸","🧸","🌷",
+    "💘","❤️","💞","💕","💗",
+    "🌳","🌴","🌲","🍀","🌺"
+];
 
-    let x = Math.random() * (window.innerWidth - 80);
-    let y = Math.random() * (window.innerHeight - 80);
-
-    h.style.left = x + "px";
-    h.style.top = y + "px";
-
-    h.onclick = function() {
-        caught++;
-        document.getElementById("count").innerHTML = 
-            "Hearts Caught: " + caught + " / 5";
-
-        h.remove();
-
-        if (caught >= 5) {
-            window.location.href = "final.html";
-        } else {
-            createHeart();
-        }
+/* RANDOM POSITION FUNCTION */
+function randomPos() {
+    return {
+        x: Math.random() * (window.innerWidth - 80),
+        y: Math.random() * (window.innerHeight - 80)
     };
-
-    document.body.appendChild(h);
 }
 
-// spawn 3 hearts at start
-createHeart();
-createHeart();
-createHeart();
-</script>
+/* CREATE EMOJI OBJECTS */
+function createEmoji(symbol) {
+    let div = document.createElement("div");
+    div.className = "emoji";
+    div.innerHTML = symbol;
 
-</body>
-</html>
+    let pos = randomPos();
+    div.style.left = pos.x + "px";
+    div.style.top = pos.y + "px";
+
+    // hearts are clickable
+    if (symbol === "💖") {
+        div.classList.add("heart");
+
+        div.onclick = function() {
+            caught++;
