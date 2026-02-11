@@ -42,7 +42,7 @@ h1 {
     50%     { transform: scale(1.15); }
 }
 
-/* Video frame */
+/* Bigger video frame */
 .video-box {
     display: inline-block;
     padding: 18px;
@@ -53,13 +53,14 @@ h1 {
     margin-bottom: 25px;
 }
 
+/* Increased size here */
 .video-box video {
-    width: 350px;
+    width: 450px;
     border-radius: 20px;
     outline: none;
 }
 
-/* Message styling */
+/* Romantic message */
 .message {
     font-size: 28px;
     margin-top: 15px;
@@ -69,7 +70,7 @@ h1 {
     line-height: 1.5;
 }
 
-/* Cute corner emojis */
+/* Corner emojis */
 .corner {
     position: absolute;
     font-size: 60px;
@@ -85,13 +86,11 @@ h1 {
 
 <body>
 
-<!-- Corner Cute Stickers -->
 <div class="corner c1">💘</div>
 <div class="corner c2">🧸</div>
 <div class="corner c3">🌷</div>
 <div class="corner c4">🎀</div>
 
-<!-- Floating Hearts -->
 <script>
 for (let i = 0; i < 25; i++) {
     let h = document.createElement("div");
@@ -107,17 +106,14 @@ for (let i = 0; i < 25; i++) {
 
 <!-- VIDEO SECTION -->
 <div class="video-box">
-    <!-- Replace the file name with your uploaded video -->
-    <video controls autoplay muted loop>
-        video.mp4
+    <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
     </video>
 </div>
 
-<!-- MESSAGE BELOW VIDEO -->
 <div class="message">
-    I love you patiyo 💕<br>
     Your forever Valentine,<br>
-    <b>Gishan</b> 💋💘✨
+    <b>Thadii</b> 💋💘✨
 </div>
 
 </body>
