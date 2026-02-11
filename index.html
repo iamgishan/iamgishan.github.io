@@ -2,70 +2,89 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Be My Valentine ❤️</title>
+<title>Be My Valentine ❤️ 2026</title>
 
 <style>
-/* PAGE BACKGROUND */
+/* ✨ PAGE BACKGROUND ✨ */
 body {
     margin: 0;
     padding: 0;
+    background: linear-gradient(to bottom right, #ffcfe8, #ffdff3, #fff0f8);
+    font-family: "Poppins", sans-serif;
     overflow: hidden;
-    background: linear-gradient(to bottom right, #ffb6c9, #ffd6e8);
-    font-family: "Comic Sans MS", cursive;
 }
 
-/* BIG FLOATING HEARTS */
+/* ✨ FLOATING HEARTS BACKGROUND ✨ */
 .big-heart {
     position: absolute;
-    font-size: 120px;
-    animation: floatUp 6s infinite ease-in-out;
+    font-size: 80px;
     opacity: 0.7;
+    animation: floatUp 8s infinite ease-in-out;
 }
 @keyframes floatUp {
-    0%   { transform: translateY(120vh) rotate(0deg); opacity: 0; }
+    0%   { transform: translateY(150vh) rotate(0deg); opacity: 0; }
     20%  { opacity: 1; }
-    100% { transform: translateY(-20vh) rotate(20deg); opacity: 0; }
+    100% { transform: translateY(-20vh) rotate(25deg); opacity: 0; }
 }
 
-/* MAIN WHITE CARD */
+/* ✨ MAIN CARD ✨ */
 .card {
-    background: lightrose;
-    width: 800px;
+    background: #ffe6f2;
+    width: 700px;
+    height: 520px;
     margin: 60px auto;
     padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 0 30px #ff8eb3;
-    text-align: center;
+    border-radius: 30px;
+
+    /* Professional cute border */
+    border: 6px solid #ffb6d9;
+    box-shadow: 0 0 25px #ff9acb, inset 0 0 30px #ffffff;
+
     position: relative;
-    height: 420px;
+    text-align: center;
     overflow: hidden;
 }
 
-/* TITLE */
+/* ✨ TITLE ✨ */
 h1 {
-    color: #ff3377;
-    font-size: 38px;
-    margin-top: 0;
-    text-shadow: 0px 0px 10px #ffb6d1;
+    color: #ff2f78;
+    font-size: 42px;
+    margin-top: 10px;
+    text-shadow: 0 0 8px #ffc7dd;
+    font-weight: 700;
 }
 
-/* COUPLE GIF */
+/* ✨ 2026 STICKER ✨ */
+.yearSticker {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    background: #ff7db5;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 18px;
+    box-shadow: 0 0 12px #ff8cc8;
+    font-weight: 600;
+}
+
+/* ✨ COUPLE GIF ✨ */
 .couple {
-    width: 180px;
-    margin-top: -10px;
-    animation: bounce 3s infinite ease-in-out;
+    width: 200px;
+    margin-top: -5px;
+    animation: dance 3s infinite ease-in-out;
 }
-@keyframes bounce {
+@keyframes dance {
     0%,100% { transform: translateY(0); }
-    50%     { transform: translateY(-12px); }
+    50%     { transform: translateY(-10px); }
 }
 
-/* BUTTONS */
+/* ✨ BUTTONS ✨ */
 .btn {
-    padding: 15px 30px;
-    font-size: 20px;
+    padding: 20px 40px;
+    font-size: 26px;
     border: none;
-    border-radius: 14px;
+    border-radius: 18px;
     cursor: pointer;
     margin: 20px;
     transition: 0.1s;
@@ -73,39 +92,49 @@ h1 {
 }
 
 #yes {
-    background: #ff4d88;
+    background: #ff2f78;
     color: white;
+    box-shadow: 0 8px 22px rgba(255, 50, 120, 0.4);
+}
+
+#yes:hover {
+    transform: scale(1.07);
 }
 
 #no {
-    background: #ffa3cf;
+    background: #ff9acb;
     color: white;
     position: absolute;
-    pointer-events: none; /* cannot click NO */
+    pointer-events: none;
+    box-shadow: 0 6px 18px rgba(255, 140, 180, 0.4);
+    padding: 18px 36px;
+    border-radius: 18px;
 }
 
-/* DECORATIVE CORNER STICKERS */
-.sticker {
+/* ✨ CORNER CUTE STICKERS ✨ */
+.corner {
     position: absolute;
-    font-size: 60px;
+    font-size: 55px;
+    opacity: 0.9;
 }
-.s1 { top: -10px; left: -10px; }
-.s2 { top: -10px; right: -10px; }
-.s3 { bottom: -10px; left: -10px; }
-.s4 { bottom: -10px; right: -10px; }
+.c1 { top: -5px; left: -5px; transform: rotate(-10deg); }
+.c2 { top: -5px; right: -5px; transform: rotate(10deg); }
+.c3 { bottom: -5px; left: -5px; transform: rotate(8deg); }
+.c4 { bottom: -5px; right: -5px; transform: rotate(-8deg); }
 
-/* FLOATING SMALL HEART PARTICLES */
+/* ✨ SMALL FLOATING HEART PARTICLES ✨ */
 .particle {
     position: absolute;
-    font-size: 25px;
-    opacity: 0.8;
-    animation: rise 8s infinite linear;
+    font-size: 26px;
+    opacity: 0.85;
+    animation: rise 9s infinite linear;
 }
 @keyframes rise {
-    0%   { transform: translateY(100vh); opacity: 0; }
+    0%   { transform: translateY(120vh); opacity: 0; }
     20%  { opacity: 1; }
     100% { transform: translateY(-20vh); opacity: 0; }
 }
+
 </style>
 </head>
 
@@ -116,20 +145,19 @@ h1 {
     <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<!-- BIG HEARTS -->
+<!-- FLOATING BIG HEARTS -->
 <div class="big-heart" style="left:10%;">❤️</div>
-<div class="big-heart" style="left:40%; animation-delay:2s;">💖</div>
-<div class="big-heart" style="left:70%; animation-delay:4s;">💕</div>
+<div class="big-heart" style="left:45%; animation-delay:2s;">💖</div>
+<div class="big-heart" style="left:80%; animation-delay:4s;">💕</div>
 
-<!-- SMALL FLOATING HEART PARTICLES -->
+<!-- FLOATING PARTICLES -->
 <script>
 for (let i = 0; i < 20; i++) {
     let h = document.createElement("div");
     h.innerHTML = "💗";
     h.className = "particle";
     h.style.left = Math.random() * 100 + "vw";
-    h.style.animationDelay = Math.random() * 6 + "s";
-    h.style.fontSize = (20 + Math.random() * 20) + "px";
+    h.style.animationDelay = Math.random() * 9 + "s";
     document.body.appendChild(h);
 }
 </script>
@@ -137,20 +165,23 @@ for (let i = 0; i < 20; i++) {
 <!-- MAIN CARD -->
 <div class="card">
 
+    <!-- 2026 sticker -->
+    <div class="yearSticker">Valentine 2026 💘</div>
+
     <!-- CORNER STICKERS -->
-    <div class="sticker s1">💘</div>
-    <div class="sticker s2">🎀</div>
-    <div class="sticker s3">💞</div>
-    <div class="sticker s4">🧸</div>
+    <div class="corner c1">💌</div>
+    <div class="corner c2">🧸</div>
+    <div class="corner c3">🌷</div>
+    <div class="corner c4">🎀</div>
 
     <h1>Will you be my Valentine? 💖</h1>
 
-    <!-- COUPLE GIF -->
-    <img src="https://i.pinimg.com/originals/35/a0/d2/35a0d2b4953f4c2da233c6f0ca6f0de2.gif" class="couple">
+    <!-- ANIMATED COUPLE GIF -->
+    <img class="couple" src="https://i.pinimg.com/originals/35/a0/d2/35a0d2b4953f4c2da233c6f0ca6f0de2.gif">
 
     <!-- BUTTONS -->
-    <button id="yes" class="btn" onclick="yesAnswer()">Yes 💕</button>
-    <button id="no" class="btn">No 😳</button>
+    <button id="yes" class="btn" onclick="yesAnswer()">YES 💕</button>
+    <button id="no" class="btn">NO 😳</button>
 
 </div>
 
@@ -162,7 +193,6 @@ function yesAnswer() {
 const noBtn = document.getElementById("no");
 const card = document.querySelector(".card");
 
-// Move NO instantly inside card
 document.addEventListener("mousemove", (e) => {
     const rect = noBtn.getBoundingClientRect();
     const btnX = rect.left + rect.width / 2;
@@ -170,7 +200,7 @@ document.addEventListener("mousemove", (e) => {
 
     const distance = Math.hypot(e.clientX - btnX, e.clientY - btnY);
 
-    if (distance < 120) {
+    if (distance < 130) {
         moveNo();
     }
 });
@@ -188,7 +218,6 @@ function moveNo() {
     noBtn.style.top = randomY + "px";
 }
 
-// initial position
 moveNo();
 </script>
 
