@@ -12,64 +12,64 @@ body {
     font-family: "Poppins", sans-serif;
     text-align: center;
     overflow: hidden;
-    padding-top: 80px;
+    padding-top: 60px;
 }
 
-/* Floating heart animation */
+/* Floating hearts */
 .floating {
     position: absolute;
     font-size: 40px;
     opacity: 0.8;
     animation: floatUp 9s infinite linear;
 }
-
 @keyframes floatUp {
     0%   { transform: translateY(110vh); opacity: 0; }
     20%  { opacity: 1; }
     100% { transform: translateY(-20vh); opacity: 0; }
 }
 
-/* Main title */
+/* Title */
 h1 {
     font-size: 60px;
     color: #ff2f78;
     font-weight: 700;
     text-shadow: 0 0 15px #ffaad4;
     animation: heartbeat 1.4s infinite ease-in-out;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 @keyframes heartbeat {
     0%,100% { transform: scale(1); }
     50%     { transform: scale(1.15); }
 }
 
-/* Subtext message */
-.message {
-    font-size: 26px;
-    margin-bottom: 30px;
-    color: #ff2f78;
-    font-weight: 600;
-    text-shadow: 0 0 10px #ffc7e2;
-}
-
-/* Photo frame */
-.photo-box {
+/* Video frame */
+.video-box {
     display: inline-block;
-    padding: 15px;
+    padding: 18px;
     border-radius: 25px;
     background: linear-gradient(145deg, #ffc1dd, #ffe6f2);
     box-shadow: 0 0 30px #ff8cc8, inset 0 0 20px #fff0fa;
     border: 6px solid #ffb6d9;
+    margin-bottom: 25px;
 }
 
-.photo-box img {
-    width: 330px;
-    height: auto;
+.video-box video {
+    width: 350px;
     border-radius: 20px;
-    box-shadow: 0 0 25px #ff7db5;
+    outline: none;
 }
 
-/* Corner stickers */
+/* Message styling */
+.message {
+    font-size: 28px;
+    margin-top: 15px;
+    color: #ff2f78;
+    font-weight: 600;
+    text-shadow: 0 0 10px #ffc7e2;
+    line-height: 1.5;
+}
+
+/* Cute corner emojis */
 .corner {
     position: absolute;
     font-size: 60px;
@@ -91,7 +91,7 @@ h1 {
 <div class="corner c3">🌷</div>
 <div class="corner c4">🎀</div>
 
-<!-- Floating animated hearts -->
+<!-- Floating Hearts -->
 <script>
 for (let i = 0; i < 25; i++) {
     let h = document.createElement("div");
@@ -105,14 +105,19 @@ for (let i = 0; i < 25; i++) {
 
 <h1>I LOVE YOU ❤️</h1>
 
-<div class="message">
-    I love you patiyo<br>
-    Your forever Valentine, <b>Gishan</b> 💋💘✨
+<!-- VIDEO SECTION -->
+<div class="video-box">
+    <!-- Replace the file name with your uploaded video -->
+    <video controls autoplay muted loop>
+        video.mp4
+    </video>
 </div>
 
-<!-- Your Uploaded Photo Goes Here -->
-<div class="photo-box">
-    us.jpg
+<!-- MESSAGE BELOW VIDEO -->
+<div class="message">
+    I love you patiyo 💕<br>
+    Your forever Valentine,<br>
+    <b>Gishan</b> 💋💘✨
 </div>
 
 </body>
