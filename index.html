@@ -3,61 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <title>Be My Valentine ❤️</title>
+
 <style>
-    body {
-        background: #ffe6f2;
-        font-family: "Comic Sans MS", cursive;
-        text-align: center;
-        padding-top: 80px;
-    }
+/* PAGE BACKGROUND */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom right, #ffb6c9, #ffd6e8);
+    font-family: "Comic Sans MS", cursive;
+}
 
-    .card {
-        background: white;
-        width: 600px;
-        margin: auto;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 0 20px #ff99c8;
-        position: relative;    /* IMPORTANT */
-        height: 300px;         /* The NO button stays inside this area */
-        overflow: hidden;      /* Do NOT let it escape */
-    }
+/* BIG FLOATING HEARTS */
+.big-heart {
+    position: absolute;
+    font-size: 80px;
+    animation: floatUp 6s infinite ease-in-out;
+    opacity: 0.7;
+}
+@keyframes floatUp {
+    0%   { transform: translateY(120vh) rotate(0deg); opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: translateY(-20vh) rotate(20deg); opacity: 0; }
+}
 
-    h1 {
-        color: #ff4d88;
-        font-size: 35px;
-        margin-top: 0;
-    }
+/* MAIN WHITE CARD */
+.card {
+    background: white;
+    width: 650px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px #ff8eb3;
+    text-align: center;
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+}
 
-    .btn {
-        padding: 15px 30px;
-        font-size: 20px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin: 10px;
-        transition: 0.1s;
-    }
+/* TITLE */
+h1 {
+    color: #ff3377;
+    font-size: 38px;
+    margin-top: 0;
+    text-shadow: 0px 0px 10px #ffb6d1;
+}
 
-    #yes {
-        background: #ff4d88;
-        color: white;
-    }
+/* COUPLE GIF */
+.couple {
+    width: 180px;
+    margin-top: -10px;
+    animation: bounce 3s infinite ease-in-out;
+}
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-12px); }
+}
 
-    #no {
-        background: #ff99c8;
-        color: white;
-        position: absolute;
-        pointer-events: none; /* Cannot click */
-    }
+/* BUTTONS */
+.btn {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    margin: 20px;
+    transition: 0.1s;
+    user-select: none;
+}
+
+#yes {
+    background: #ff4d88;
+    color: white;
+}
+
+#no {
+    background: #ffa3cf;
+    color: white;
+    position: absolute;
+    pointer-events: none; /* cannot click NO */
+}
+
+/* DECORATIVE CORNER STICKERS */
+.sticker {
+    position: absolute;
+    font-size: 60px;
+}
+.s1 { top: -10px; left: -10px; }
+.s2 { top: -10px; right: -10px; }
+.s3 { bottom: -10px; left: -10px; }
+.s4 { bottom: -10px; right: -10px; }
+
+/* FLOATING SMALL HEART PARTICLES */
+.particle {
+    position: absolute;
+    font-size: 25px;
+    opacity: 0.8;
+    animation: rise 8s infinite linear;
+}
+@keyframes rise {
+    0%   { transform: translateY(100vh); opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: translateY(-20vh); opacity: 0; }
+}
 </style>
 </head>
+
 <body>
 
+<!-- BACKGROUND MUSIC -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<!-- BIG HEARTS -->
+<div class="big-heart" style="left:10%;">❤️</div>
+<div class="big-heart" style="left:40%; animation-delay:2s;">💖</div>
+<div class="big-heart" style="left:70%; animation-delay:4s;">💕</div>
+
+<!-- SMALL FLOATING HEART PARTICLES -->
+<script>
+for (let i = 0; i < 20; i++) {
+    let h = document.createElement("div");
+    h.innerHTML = "💗";
+    h.className = "particle";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 6 + "s";
+    h.style.fontSize = (20 + Math.random() * 20) + "px";
+    document.body.appendChild(h);
+}
+</script>
+
+<!-- MAIN CARD -->
 <div class="card">
+
+    <!-- CORNER STICKERS -->
+    <div class="sticker s1">💘</div>
+    <div class="sticker s2">🎀</div>
+    <div class="sticker s3">💞</div>
+    <div class="sticker s4">🧸</div>
 
     <h1>Will you be my Valentine? 💖</h1>
 
+    <!-- COUPLE GIF -->
+    <img src="https://i.pinimg.com/originals/35/a0/d2/35a0d2b4953f4c2da233c6f0ca6f0de2.gif" class="couple">
+
+    <!-- BUTTONS -->
     <button id="yes" class="btn" onclick="yesAnswer()">Yes 💕</button>
     <button id="no" class="btn">No 😳</button>
 
@@ -65,13 +156,13 @@
 
 <script>
 function yesAnswer() {
-    window.location.href = "love.html"; 
+    window.location.href = "love.html";
 }
 
 const noBtn = document.getElementById("no");
 const card = document.querySelector(".card");
 
-// Move NO whenever mouse is near
+// Move NO instantly inside card
 document.addEventListener("mousemove", (e) => {
     const rect = noBtn.getBoundingClientRect();
     const btnX = rect.left + rect.width / 2;
@@ -97,7 +188,7 @@ function moveNo() {
     noBtn.style.top = randomY + "px";
 }
 
-// Set starting position
+// initial position
 moveNo();
 </script>
 
