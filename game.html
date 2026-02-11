@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Catch My Heart ❤️</title>
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(to right, #ffb6d9, #ffd6e8);
+    font-family: "Poppins", sans-serif;
+}
+
+.counterBox {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 16px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ff2f78;
+    box-shadow: 0 0 12px #ff8cc8;
+}
+
+.heart {
+    position: absolute;
+    font-size: 50px;
+    cursor: pointer;
+    animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-30px); }
+    100% { transform: translateY(0px); }
+}
+</style>
+</head>
+<body>
+
+<div class="counterBox" id="count">Hearts Caught: 0 / 5</div>
+
+<script>
+let caught = 0;
+
+function createHeart() {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+
+    let x = Math.random() * (window.innerWidth - 80);
+    let y = Math.random() * (window.innerHeight - 80);
+
+    h.style.left = x + "px";
+    h.style.top = y + "px";
+
+    h.onclick = function() {
+        caught++;
+        document.getElementById("count").innerHTML = 
+            "Hearts Caught: " + caught + " / 5";
+
+        h.remove();
+
+        if (caught >= 5) {
+            window.location.href = "final.html";
+        } else {
+            createHeart();
+        }
+    };
+
+    document.body.appendChild(h);
+}
+
+// spawn 3 hearts at start
+createHeart();
+createHeart();
+createHeart();
+</script>
+
+</body>
+</html>
