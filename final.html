@@ -2,65 +2,118 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>I LOVE YOU ❤️</title>
+<title>I Love You ❤️</title>
+
 <style>
 body {
-    background: linear-gradient(to bottom right, #ffd6e8, #ffe6f3);
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #ffd6e8, #ffe6f3, #fff0f8);
     font-family: "Poppins", sans-serif;
     text-align: center;
-    padding-top: 100px;
     overflow: hidden;
+    padding-top: 80px;
 }
 
-/* floating hearts */
-.heart {
+/* Floating heart animation */
+.floating {
     position: absolute;
     font-size: 40px;
-    animation: floatUp 8s infinite linear;
-    opacity: 0.6;
+    opacity: 0.8;
+    animation: floatUp 9s infinite linear;
 }
+
 @keyframes floatUp {
-    0% { transform: translateY(120vh); opacity: 0; }
-    20% { opacity: 1; }
+    0%   { transform: translateY(110vh); opacity: 0; }
+    20%  { opacity: 1; }
     100% { transform: translateY(-20vh); opacity: 0; }
 }
 
+/* Main title */
 h1 {
-    font-size: 70px;
+    font-size: 60px;
     color: #ff2f78;
+    font-weight: 700;
+    text-shadow: 0 0 15px #ffaad4;
+    animation: heartbeat 1.4s infinite ease-in-out;
     margin-bottom: 20px;
-    animation: heartbeat 1.4s infinite;
 }
 @keyframes heartbeat {
     0%,100% { transform: scale(1); }
     50%     { transform: scale(1.15); }
 }
 
-img {
-    width: 320px;
-    border-radius: 20px;
-    border: 6px solid #ffb6d9;
-    box-shadow: 0 0 25px #ff8ec5;
+/* Subtext message */
+.message {
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: #ff2f78;
+    font-weight: 600;
+    text-shadow: 0 0 10px #ffc7e2;
 }
+
+/* Photo frame */
+.photo-box {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #ffc1dd, #ffe6f2);
+    box-shadow: 0 0 30px #ff8cc8, inset 0 0 20px #fff0fa;
+    border: 6px solid #ffb6d9;
+}
+
+.photo-box img {
+    width: 330px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #ff7db5;
+}
+
+/* Corner stickers */
+.corner {
+    position: absolute;
+    font-size: 60px;
+    opacity: 0.95;
+}
+.c1 { top: 10px; left: 10px; }
+.c2 { top: 10px; right: 10px; }
+.c3 { bottom: 10px; left: 10px; }
+.c4 { bottom: 10px; right: 10px; }
+
 </style>
 </head>
 
 <body>
 
-<h1>I LOVE YOU ❤️</h1>
+<!-- Corner Cute Stickers -->
+<div class="corner c1">💘</div>
+<div class="corner c2">🧸</div>
+<div class="corner c3">🌷</div>
+<div class="corner c4">🎀</div>
 
-us.jpg
-
+<!-- Floating animated hearts -->
 <script>
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 25; i++) {
     let h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "💗";
+    h.className = "floating";
+    h.innerHTML = ["💗","💖","💕","❤️","✨","🌸"][Math.floor(Math.random()*6)];
     h.style.left = Math.random() * 100 + "vw";
     h.style.animationDelay = Math.random() * 8 + "s";
     document.body.appendChild(h);
 }
 </script>
+
+<h1>I LOVE YOU ❤️</h1>
+
+<div class="message">
+    I love you patiyo<br>
+    Your forever Valentine, <b>Gishan</b> 💋💘✨
+</div>
+
+<!-- Your Uploaded Photo Goes Here -->
+<div class="photo-box">
+    us.jpg
+</div>
 
 </body>
 </html>
